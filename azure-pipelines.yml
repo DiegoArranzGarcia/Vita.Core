@@ -14,7 +14,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  version: '0.0.*-alpha'
+  version: '0.0.1-alpha'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -43,7 +43,9 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     nobuild: true
-    versioningScheme: 'byBuildNumber'
+    includesymbols: true
+    includesource: true
+    versioningScheme: 'off'
 
 - task: DotNetCoreCLI@2
   enabled: false
