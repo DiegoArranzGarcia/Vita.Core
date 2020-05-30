@@ -44,10 +44,21 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Generate .nugpkg'
+  displayName: 'Generate Vita.Common.Domain.nugpkg'
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '**/Vita.Common.Domain.csproj'
+    nobuild: true
+    includesymbols: true
+    includesource: true
+    versioningScheme: byEnvVar 
+    versionEnvVar: GitVersion.NuGetVersion
+
+- task: DotNetCoreCLI@2
+  displayName: 'Generate Vita.Common.Http.Pagination.nugpkg'
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/Vita.Common.Http.Pagination.csproj'
     nobuild: true
     includesymbols: true
     includesource: true
