@@ -9,11 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A2712E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Http", "Http", "{6DBA64FE-66CF-455A-9F56-32FA3FD275CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita.Common.Http.Pagination", "Vita.Common.Http.Pagination\Vita.Common.Http.Pagination.csproj", "{E1512783-75EB-4021-9461-0D7878664A35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Common.Http.Pagination", "Vita.Common.Http.Pagination\Vita.Common.Http.Pagination.csproj", "{E1512783-75EB-4021-9461-0D7878664A35}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AD1D19D8-BDCA-4B28-8831-D3DEA94D0D18}"
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines.yml = azure-pipelines.yml
+		gitversion.yml = gitversion.yml
 	EndProjectSection
 EndProject
 Global
