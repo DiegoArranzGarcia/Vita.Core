@@ -14,37 +14,62 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  version: 0.0.*-alpha
 
 steps:
+
 - task: NuGetToolInstaller@1
 
+- task: GitVersion@5
+  displayName: GitVersion 
+  inputs: 
+    runtime: 'core'
+    preferBundledVersion: false
+    configFilePath: './gitversion.yml'
+
 - task: NuGetCommand@2
+  displayName: 'Restore NuGets for solution'
   inputs:
+    command: 'restore'
     restoreSolution: '$(solution)'
+    feedsToUse: 'select'
+    vstsFeed: 'd4d4328d-23fb-4700-a85b-694186019d4e/5bee72dc-d135-4e9c-84ec-df7c2fe16086'
+    versioningScheme: byBuildNumber
 
 - task: VSBuild@1
+  displayName: 'Compile Solution'
   inputs:
     solution: '$(solution)'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
 - task: DotNetCoreCLI@2
+  displayName: 'Generate Vita.Common.Domain.nugpkg'
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '**/Vita.Common.Domain.csproj'
     nobuild: true
-    versioningScheme: 'byBuildNumber'
+    includesymbols: false
+    includesource: false
+    versioningScheme: byEnvVar 
+    versionEnvVar: GitVersion.NuGetVersion
 
 - task: DotNetCoreCLI@2
+  displayName: 'Generate Vita.Common.Http.Pagination.nugpkg'
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/Vita.Common.Http.Pagination.csproj'
+    nobuild: true
+    includesymbols: false
+    includesource: false
+    versioningScheme: byEnvVar 
+    versionEnvVar: GitVersion.NuGetVersion
+
+- task: DotNetCoreCLI@2
+  displayName: 'Push NuGet Packages'
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'd4d4328d-23fb-4700-a85b-694186019d4e/5bee72dc-d135-4e9c-84ec-df7c2fe16086'
+    versioningScheme: byBuildNumber
