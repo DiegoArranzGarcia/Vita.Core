@@ -49,8 +49,8 @@ steps:
     command: 'pack'
     packagesToPack: '**/Vita.Common.Domain.csproj'
     nobuild: true
-    includesymbols: true
-    includesource: true
+    includesymbols: false
+    includesource: false
     versioningScheme: byEnvVar 
     versionEnvVar: GitVersion.NuGetVersion
 
@@ -60,8 +60,8 @@ steps:
     command: 'pack'
     packagesToPack: '**/Vita.Common.Http.Pagination.csproj'
     nobuild: true
-    includesymbols: true
-    includesource: true
+    includesymbols: false
+    includesource: false
     versioningScheme: byEnvVar 
     versionEnvVar: GitVersion.NuGetVersion
 
