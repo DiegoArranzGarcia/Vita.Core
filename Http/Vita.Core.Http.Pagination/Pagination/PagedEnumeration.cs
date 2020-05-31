@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Vita.Application.Abstractions.Pagination
+namespace Vita.Core.Http.Pagination.Pagination
 {
 	public class PagedList<T> : List<T>
 	{

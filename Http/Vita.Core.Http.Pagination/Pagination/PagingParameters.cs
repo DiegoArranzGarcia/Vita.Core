@@ -1,4 +1,4 @@
-﻿namespace Vita.Application.Abstractions.Pagination
+﻿namespace Vita.Core.Http.Pagination.Pagination
 {
 	public abstract class PagingParameters
 	{
@@ -8,14 +8,8 @@
 		private int _pageSize = 10;
 		public int PageSize
 		{
-			get
-			{
-				return _pageSize;
-			}
-			set
-			{
-				_pageSize = value > maxPageSize ? maxPageSize : value;
-			}
+			get => _pageSize;
+			set => _pageSize = value > maxPageSize ? maxPageSize : value;
 		}
 	}
 }

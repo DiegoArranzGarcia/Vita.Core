@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Vita.Application.Abstractions.Pagination
+namespace Vita.Core.Http.Pagination.Pagination
 {
 	public static class PagedListExtensions
-    {
+	{
 		public static PagedList<T> ToPagedList<T>(this IEnumerable<T> source, int pageNumber, int pageSize)
 		{
-			return ToPagedList(source.AsQueryable(), pageNumber, pageSize);
+			return source.AsQueryable().ToPagedList(pageNumber, pageSize);
 		}
 
 		public static PagedList<T> ToPagedList<T>(this IQueryable<T> source, int pageNumber, int pageSize)

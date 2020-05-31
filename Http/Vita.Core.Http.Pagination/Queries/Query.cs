@@ -1,6 +1,6 @@
-﻿using Vita.Application.Abstractions.Pagination;
+﻿using Vita.Core.Http.Pagination.Pagination;
 
-namespace Vita.Application.Abstractions.Queries
+namespace Vita.Core.Http.Pagination.Queries
 {
     public class Query : PagingParameters
     {

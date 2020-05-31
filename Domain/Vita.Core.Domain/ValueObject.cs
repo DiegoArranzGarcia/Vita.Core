@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Vita.Domain.Abstractions
+namespace Vita.Core.Domain
 {
     public abstract class ValueObject
     {
         protected static bool EqualOperator(ValueObject left, ValueObject right)
         {
             if (left is null ^ right is null)
+            {
                 return false;
+            }
 
             return left is null || left.Equals(right);
         }
@@ -23,7 +25,9 @@ namespace Vita.Domain.Abstractions
         public override bool Equals(object obj)
         {
             if (obj == null || obj.GetType() != GetType())
+            {
                 return false;
+            }
 
             ValueObject other = (ValueObject)obj;
             IEnumerator<object> thisValues = GetAtomicValues().GetEnumerator();
@@ -32,10 +36,14 @@ namespace Vita.Domain.Abstractions
             while (thisValues.MoveNext() && otherValues.MoveNext())
             {
                 if (ReferenceEquals(thisValues.Current, null) ^ ReferenceEquals(otherValues.Current, null))
+                {
                     return false;
+                }
 
                 if (thisValues.Current != null && !thisValues.Current.Equals(otherValues.Current))
+                {
                     return false;
+                }
             }
 
             return !thisValues.MoveNext() && !otherValues.MoveNext();
