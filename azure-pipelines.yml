@@ -1,5 +1,5 @@
 trigger:
-- feature/+
+- feature/*
 - master
 
 pool:
