@@ -3,18 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Common.Domain", "Domain\Vita.Common.Domain\Vita.Common.Domain.csproj", "{9EEE8052-41BA-4F38-9656-2B148DF07618}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Core.Domain", "Domain\Vita.Core.Domain\Vita.Core.Domain.csproj", "{9EEE8052-41BA-4F38-9656-2B148DF07618}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A2712E74-E66E-449E-B1BE-95DC9F024F13}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Http", "Http", "{6DBA64FE-66CF-455A-9F56-32FA3FD275CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Common.Http.Pagination", "Vita.Common.Http.Pagination\Vita.Common.Http.Pagination.csproj", "{E1512783-75EB-4021-9461-0D7878664A35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Core.Http.Pagination", "Http\Vita.Core.Http.Pagination\Vita.Core.Http.Pagination.csproj", "{E1512783-75EB-4021-9461-0D7878664A35}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AD1D19D8-BDCA-4B28-8831-D3DEA94D0D18}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		azure-pipelines.yml = azure-pipelines.yml
 		gitversion.yml = gitversion.yml
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global

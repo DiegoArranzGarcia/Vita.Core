@@ -1,10 +1,5 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
-- develop
+- feature/+
 - master
 
 pool:
@@ -44,10 +39,10 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Generate Vita.Common.Domain.nugpkg'
+  displayName: 'Generate Vita.Core.Domain.nugpkg'
   inputs:
     command: 'pack'
-    packagesToPack: '**/Vita.Common.Domain.csproj'
+    packagesToPack: '**/Vita.Core.Domain.csproj'
     nobuild: true
     includesymbols: false
     includesource: false
@@ -55,10 +50,10 @@ steps:
     versionEnvVar: GitVersion.NuGetVersion
 
 - task: DotNetCoreCLI@2
-  displayName: 'Generate Vita.Common.Http.Pagination.nugpkg'
+  displayName: 'Generate Vita.Core.Http.Pagination.nugpkg'
   inputs:
     command: 'pack'
-    packagesToPack: '**/Vita.Common.Http.Pagination.csproj'
+    packagesToPack: '**/Vita.Core.Http.Pagination.csproj'
     nobuild: true
     includesymbols: false
     includesource: false
