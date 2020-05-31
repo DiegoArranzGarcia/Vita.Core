@@ -1,5 +1,5 @@
 trigger:
-- feature/+
+- feature/*
 - master
 
 pool:
@@ -50,10 +50,22 @@ steps:
     versionEnvVar: GitVersion.NuGetVersion
 
 - task: DotNetCoreCLI@2
-  displayName: 'Generate Vita.Core.Http.Pagination.nugpkg'
+  displayName: 'Generate Vita.Core.Pagination.nugpkg'
   inputs:
     command: 'pack'
-    packagesToPack: '**/Vita.Core.Http.Pagination.csproj'
+    packagesToPack: '**/Vita.Core.Pagination.csproj'
+    nobuild: true
+    includesymbols: false
+    includesource: false
+    versioningScheme: byEnvVar 
+    versionEnvVar: GitVersion.NuGetVersion
+
+
+- task: DotNetCoreCLI@2
+  displayName: 'Generate Vita.Core.Pagination.Http.nugpkg'
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/Vita.Core.Pagination.Http.csproj'
     nobuild: true
     includesymbols: false
     includesource: false
