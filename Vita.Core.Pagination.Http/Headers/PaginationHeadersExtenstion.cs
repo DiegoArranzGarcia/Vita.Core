@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using Vita.Core.Http.Pagination.Pagination;
 
 namespace Vita.Core.Pagination.Http.Headers
 {
-	public static class PaginationExtension
+    public static class PaginationExtension
 	{
 		public const string DefaultPaginationCookieName = "X-Pagination";
 
