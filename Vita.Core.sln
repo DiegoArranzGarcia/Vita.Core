@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita.Core.Pagination.Http", "Vita.Core.Pagination.Http\Vita.Core.Pagination.Http.csproj", "{51A03EB7-919B-4173-AF59-BE752FB72E17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita.Core.Pagination.Http", "Pagination\Vita.Core.Pagination.Http\Vita.Core.Pagination.Http.csproj", "{51A03EB7-919B-4173-AF59-BE752FB72E17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

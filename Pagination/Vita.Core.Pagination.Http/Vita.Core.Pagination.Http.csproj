@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pagination\Vita.Core.Pagination\Vita.Core.Pagination.csproj" />
+    <ProjectReference Include="..\Vita.Core.Pagination\Vita.Core.Pagination.csproj" />
   </ItemGroup>
 
 </Project>
