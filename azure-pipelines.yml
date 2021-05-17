@@ -21,6 +21,12 @@ steps:
     preferBundledVersion: false
     configFilePath: './gitversion.yml'
 
+- task: SonarQubePrepare@4
+  inputs:
+    SonarQube: 'Vita SonarQube'
+    scannerMode: 'MSBuild'
+    projectKey: 'DiegoArranzGarcia_Vita'
+
 - task: NuGetCommand@2
   displayName: 'Restore NuGets for solution'
   inputs:
@@ -37,6 +43,17 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+
+- task: SonarQubePrepare@4
+  inputs:
+    SonarQube: 'Vita SonarQube'
+    scannerMode: 'MSBuild'
+    projectKey: 'DiegoArranzGarcia_Vita'
+
+- task: SonarQubePublish@4
+  inputs:
+    pollingTimeoutSec: '300'
 
 - task: DotNetCoreCLI@2
   displayName: 'Generate Vita.Core.Domain.nugpkg'
