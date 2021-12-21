@@ -12,71 +12,76 @@ variables:
 
 steps:
 
-- task: NuGetToolInstaller@1
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '6.0.x'
+    - task: gitversion/setup@0
+      inputs:
+        versionSpec: '5.x'
 
-- task: GitVersion@5
-  displayName: GitVersion 
-  inputs: 
-    runtime: 'core'
-    preferBundledVersion: false
-    configFilePath: './gitversion.yml'
+    - task: gitversion/execute@0
+      inputs:
+        useConfigFile: true
+        configFilePath: './gitversion.yml'
+    - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  displayName: 'Restore NuGets for solution'
-  inputs:
-    command: 'restore'
-    restoreSolution: '$(solution)'
-    feedsToUse: 'select'
-    vstsFeed: 'd4d4328d-23fb-4700-a85b-694186019d4e/5bee72dc-d135-4e9c-84ec-df7c2fe16086'
-    versioningScheme: byBuildNumber
-
-- task: VSBuild@1
-  displayName: 'Compile Solution'
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Generate Vita.Core.Domain.nugpkg'
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/Vita.Core.Domain.csproj'
-    nobuild: true
-    includesymbols: false
-    includesource: false
-    versioningScheme: byEnvVar 
-    versionEnvVar: GitVersion.NuGetVersion
-
-- task: DotNetCoreCLI@2
-  displayName: 'Generate Vita.Core.Pagination.nugpkg'
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/Vita.Core.Pagination.csproj'
-    nobuild: true
-    includesymbols: false
-    includesource: false
-    versioningScheme: byEnvVar 
-    versionEnvVar: GitVersion.NuGetVersion
-
-
-- task: DotNetCoreCLI@2
-  displayName: 'Generate Vita.Core.Pagination.Http.nugpkg'
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/Vita.Core.Pagination.Http.csproj'
-    nobuild: true
-    includesymbols: false
-    includesource: false
-    versioningScheme: byEnvVar 
-    versionEnvVar: GitVersion.NuGetVersion
-
-- task: DotNetCoreCLI@2
-  displayName: 'Push NuGet Packages'
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: 'd4d4328d-23fb-4700-a85b-694186019d4e/5bee72dc-d135-4e9c-84ec-df7c2fe16086'
-    versioningScheme: byBuildNumber
+    - task: NuGetCommand@2
+      displayName: 'Restore NuGets for solution'
+      inputs:
+        command: 'restore'
+        restoreSolution: '$(solution)'
+        feedsToUse: 'select'
+        vstsFeed: 'd4d4328d-23fb-4700-a85b-694186019d4e/5bee72dc-d135-4e9c-84ec-df7c2fe16086'
+        versioningScheme: byBuildNumber
+    
+    - task: VSBuild@1
+      displayName: 'Compile Solution'
+      inputs:
+        solution: '$(solution)'
+        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+    
+    - task: DotNetCoreCLI@2
+      displayName: 'Generate Vita.Core.Domain.nugpkg'
+      inputs:
+        command: 'pack'
+        packagesToPack: '**/Vita.Core.Domain.csproj'
+        nobuild: true
+        includesymbols: false
+        includesource: false
+        versioningScheme: byEnvVar 
+        versionEnvVar: GitVersion.NuGetVersion
+    
+    - task: DotNetCoreCLI@2
+      displayName: 'Generate Vita.Core.Pagination.nugpkg'
+      inputs:
+        command: 'pack'
+        packagesToPack: '**/Vita.Core.Pagination.csproj'
+        nobuild: true
+        includesymbols: false
+        includesource: false
+        versioningScheme: byEnvVar 
+        versionEnvVar: GitVersion.NuGetVersion
+    
+    
+    - task: DotNetCoreCLI@2
+      displayName: 'Generate Vita.Core.Pagination.Http.nugpkg'
+      inputs:
+        command: 'pack'
+        packagesToPack: '**/Vita.Core.Pagination.Http.csproj'
+        nobuild: true
+        includesymbols: false
+        includesource: false
+        versioningScheme: byEnvVar 
+        versionEnvVar: GitVersion.NuGetVersion
+    
+    - task: DotNetCoreCLI@2
+      displayName: 'Push NuGet Packages'
+      inputs:
+        command: 'push'
+        packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+        nuGetFeedType: 'internal'
+        publishVstsFeed: 'd4d4328d-23fb-4700-a85b-694186019d4e/5bee72dc-d135-4e9c-84ec-df7c2fe16086'
+        versioningScheme: byBuildNumber
