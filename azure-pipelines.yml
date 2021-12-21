@@ -14,8 +14,8 @@ steps:
 
     - task: UseDotNet@2
       inputs:
+        packageType: 'sdk'
         version: '6.0.x'
-        packageType: runtime
 
     - task: NuGetToolInstaller@1
     
