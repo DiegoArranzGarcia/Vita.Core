@@ -16,14 +16,16 @@ steps:
       inputs:
         packageType: 'sdk'
         version: '6.0.x'
-
-    - task: NuGetToolInstaller@1
+    - task: gitversion/setup@0
+      inputs:
+        versionSpec: '5.x'
 
     - task: gitversion/execute@0
       inputs:
         useConfigFile: true
         configFilePath: './gitversion.yml'
-    
+    - task: NuGetToolInstaller@1
+
     - task: NuGetCommand@2
       displayName: 'Restore NuGets for solution'
       inputs:
