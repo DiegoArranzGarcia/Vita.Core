@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Vita.Core.Domain.Repositories
+namespace Vita.Core.Domain
 {
     public abstract class Enumeration : IComparable
     {
