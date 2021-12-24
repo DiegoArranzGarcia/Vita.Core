@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using Vita.Core.Domain.Events;
 
 namespace Vita.Core.Domain.Repositories
 {
-
     public abstract class Entity
     {
         public Guid Id { get; set; }
+
+        public List<DomainEvent> Events = new();
 
         public bool IsTransient()
         {
