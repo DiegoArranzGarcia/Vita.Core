@@ -2,10 +2,10 @@
 
 namespace Vita.Core.Domain.Events
 {
-    internal class IntegrationEvent
+    public class IntegrationEvent
     {
         public Guid Id { get; set; }
-        public DateTimeOffset OcurredAt { get; set; }
+        public DateTimeOffset OcurredAt { get; set; } = DateTimeOffset.UtcNow;
         public string Type { get; set; }
     }
 }

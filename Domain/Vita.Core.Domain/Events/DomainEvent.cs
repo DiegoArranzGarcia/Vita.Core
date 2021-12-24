@@ -4,6 +4,6 @@ namespace Vita.Core.Domain.Events
 {
     public abstract class DomainEvent
     {
-        public DateTimeOffset OcurredAt { get; set; }
+        public DateTimeOffset OcurredAt { get; set; } = DateTimeOffset.UtcNow;
     }
 }
