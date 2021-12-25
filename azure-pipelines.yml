@@ -17,10 +17,12 @@ steps:
         version: '6.0.x'
 
     - task: gitversion/setup@0
+      displayName: 'Install GitVersion Tool'
       inputs:
         versionSpec: '5.x'
 
     - task: gitversion/execute@0
+      displayName: 'Get Semantic Version'
       inputs:
         useConfigFile: true
         configFilePath: './gitversion.yml'
