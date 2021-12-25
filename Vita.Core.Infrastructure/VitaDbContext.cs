@@ -1,5 +1,8 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Vita.Core.Domain.Repositories;
 
 namespace Vita.Core.Infrastructure.Sql
