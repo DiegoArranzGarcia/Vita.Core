@@ -16,7 +16,7 @@ namespace Vita.Core.Infrastructure.Sql
             _mediator = mediator;
         }
 
-        public async Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default)
+        public virtual async Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default)
         {
             var result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
