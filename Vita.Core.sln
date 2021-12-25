@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CBB83DE9-0988-4D09-A110-BFC68A364CA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita.Core.Infrastructure.Sql", "Vita.Core.Infrastructure\Vita.Core.Infrastructure.Sql.csproj", "{F6010DF6-6AD7-4204-8B78-3A74525FECAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,12 +29,17 @@ Global
 		{9EEE8052-41BA-4F38-9656-2B148DF07618}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EEE8052-41BA-4F38-9656-2B148DF07618}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EEE8052-41BA-4F38-9656-2B148DF07618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6010DF6-6AD7-4204-8B78-3A74525FECAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6010DF6-6AD7-4204-8B78-3A74525FECAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6010DF6-6AD7-4204-8B78-3A74525FECAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6010DF6-6AD7-4204-8B78-3A74525FECAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9EEE8052-41BA-4F38-9656-2B148DF07618} = {A2712E74-E66E-449E-B1BE-95DC9F024F13}
+		{F6010DF6-6AD7-4204-8B78-3A74525FECAA} = {CBB83DE9-0988-4D09-A110-BFC68A364CA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7DB144D6-0843-4A6B-AC4D-E4FA830E59BC}
