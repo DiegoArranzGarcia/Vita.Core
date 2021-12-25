@@ -11,7 +11,7 @@ namespace Vita.Core.Infrastructure.Sql
     {
         private readonly IMediator _mediator;
 
-        public VitaDbContext(DbContextOptions<VitaDbContext> options, IMediator mediator) : base(options)
+        public VitaDbContext(DbContextOptions options, IMediator mediator) : base(options)
         {
             _mediator = mediator;
         }
