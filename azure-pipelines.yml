@@ -1,5 +1,4 @@
 trigger:
-- feature/*
 - master
 
 pool:
@@ -16,11 +15,14 @@ steps:
       inputs:
         packageType: 'sdk'
         version: '6.0.x'
+
     - task: gitversion/setup@0
+      displayName: 'Install GitVersion Tool'
       inputs:
         versionSpec: '5.x'
 
     - task: gitversion/execute@0
+      displayName: 'Get Semantic Version'
       inputs:
         useConfigFile: true
         configFilePath: './gitversion.yml'
@@ -53,24 +55,23 @@ steps:
         includesource: false
         versioningScheme: byEnvVar 
         versionEnvVar: GitVersion.NuGetVersion
-    
+
     - task: DotNetCoreCLI@2
-      displayName: 'Generate Vita.Core.Pagination.nugpkg'
+      displayName: 'Generate Vita.Core.Infrastructure.Sql.nugpkg'
       inputs:
         command: 'pack'
-        packagesToPack: '**/Vita.Core.Pagination.csproj'
+        packagesToPack: '**/Vita.Core.Infrastructure.Sql.csproj'
         nobuild: true
         includesymbols: false
         includesource: false
         versioningScheme: byEnvVar 
         versionEnvVar: GitVersion.NuGetVersion
-    
-    
+
     - task: DotNetCoreCLI@2
-      displayName: 'Generate Vita.Core.Pagination.Http.nugpkg'
+      displayName: 'Generate Vita.Core.Infrastructure.AzureServiceBus.nugpkg'
       inputs:
         command: 'pack'
-        packagesToPack: '**/Vita.Core.Pagination.Http.csproj'
+        packagesToPack: '**/Vita.Core.Infrastructure.AzureServiceBus.csproj'
         nobuild: true
         includesymbols: false
         includesource: false
