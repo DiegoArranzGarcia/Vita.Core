@@ -66,6 +66,17 @@ steps:
         includesource: false
         versioningScheme: byEnvVar 
         versionEnvVar: GitVersion.NuGetVersion
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Generate Vita.Core.Infrastructure.AzureServiceBus.nugpkg'
+      inputs:
+        command: 'pack'
+        packagesToPack: '**/Vita.Core.Infrastructure.AzureServiceBus.csproj'
+        nobuild: true
+        includesymbols: false
+        includesource: false
+        versioningScheme: byEnvVar 
+        versionEnvVar: GitVersion.NuGetVersion
     
     - task: DotNetCoreCLI@2
       displayName: 'Push NuGet Packages'
