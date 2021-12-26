@@ -11,7 +11,7 @@ namespace Vita.Core.Domain.Repositories
 
         public bool IsTransient()
         {
-            return Id == default;
+            return Id == Guid.Empty;
         }
 
         public override bool Equals(object obj)
