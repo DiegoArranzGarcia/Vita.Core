@@ -11,32 +11,24 @@ namespace Vita.Core.Domain.Repositories
 
         public bool IsTransient()
         {
-            return Id == default;
+            return Id == Guid.Empty;
         }
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Entity))
-            {
+            if (obj is not Entity)
                 return false;
-            }
 
             if (ReferenceEquals(this, obj))
-            {
                 return true;
-            }
 
             if (GetType() != obj.GetType())
-            {
                 return false;
-            }
 
             Entity item = (Entity)obj;
 
             if (item.IsTransient() || IsTransient())
-            {
                 return false;
-            }
 
             return item.Id == Id;
         }

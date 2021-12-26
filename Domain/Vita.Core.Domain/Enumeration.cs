@@ -27,9 +27,7 @@ namespace Vita.Core.Domain
 
         public override bool Equals(object obj)
         {
-            var otherValue = obj as Enumeration;
-
-            if (otherValue == null)
+            if (obj is not Enumeration otherValue)
                 return false;
 
             var typeMatches = GetType().Equals(obj.GetType());
@@ -68,6 +66,6 @@ namespace Vita.Core.Domain
             return matchingItem;
         }
 
-        public int CompareTo(object other) => Id.CompareTo(((Enumeration)other).Id);
+        public int CompareTo(object obj) => Id.CompareTo(((Enumeration)obj).Id);
     }
 }

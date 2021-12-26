@@ -35,7 +35,7 @@ namespace Vita.Core.Domain
 
             while (thisValues.MoveNext() && otherValues.MoveNext())
             {
-                if (ReferenceEquals(thisValues.Current, null) ^ ReferenceEquals(otherValues.Current, null))
+                if (thisValues.Current is null ^ otherValues.Current is null)
                 {
                     return false;
                 }
