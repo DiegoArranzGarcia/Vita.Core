@@ -1,0 +1,15 @@
+{
+  "ServerUri": "https://sonarcloud.io/",
+  "Organization": {
+    "Key": "vita",
+    "Name": "Vita"
+  },
+  "ProjectKey": "DiegoArranzGarcia_Vita.Core",
+  "ProjectName": "Vita.Core",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AXl8CTb2PN3Q7N3oPM3b",
+      "ProfileTimestamp": "2021-11-22T10:44:23Z"
+    }
+  }
+}
