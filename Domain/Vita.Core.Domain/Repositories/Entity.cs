@@ -7,7 +7,7 @@ namespace Vita.Core.Domain.Repositories
     public abstract class Entity
     {
         public Guid Id { get; set; }
-        public List<DomainEvent> Events { get; set; } = new();
+        public List<DomainEvent> Events { get; init; } = new();
 
         public bool IsTransient()
         {
