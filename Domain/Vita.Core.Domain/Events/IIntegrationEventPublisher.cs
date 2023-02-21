@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace Vita.Core.Domain.Events
+namespace Vita.Core.Domain.Events;
+
+public interface IIntegrationEventPublisher
 {
-    public interface IIntegrationEventPublisher
-    {
-        Task PublishAsync(IntegrationEvent integrationEvent);
-    }
+    Task PublishAsync(IntegrationEvent integrationEvent);
 }

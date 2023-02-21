@@ -2,13 +2,12 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Vita.Core.Domain.Repositories;
 
-namespace Vita.Core.Infrastructure.Sql
+namespace Vita.Core.Infrastructure.Sql;
+
+public abstract class EntityTypeConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : Entity
 {
-    public abstract class EntityTypeConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : Entity
+    public virtual void Configure(EntityTypeBuilder<TEntity> builder)
     {
-        public virtual void Configure(EntityTypeBuilder<TEntity> builder)
-        {
-            builder.Ignore(x => x.Events);
-        }
+        builder.Ignore(x => x.Events);
     }
 }

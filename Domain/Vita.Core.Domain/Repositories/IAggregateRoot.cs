@@ -1,6 +1,5 @@
-﻿namespace Vita.Core.Domain.Repositories
+﻿namespace Vita.Core.Domain.Repositories;
+
+public interface IAggregateRoot
 {
-    public interface IAggregateRoot
-    {
-    }
 }
