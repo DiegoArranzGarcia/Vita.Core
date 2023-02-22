@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Vita.Core.Domain.Repositories;
+using Vita.Core.Domain;
 
 namespace Vita.Core.Infrastructure.Sql;
 

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Vita.Core.Domain.Events;
 
-namespace Vita.Core.Domain.Repositories;
+namespace Vita.Core.Domain;
 
 public abstract class Entity
 {
-    public Guid Id { get; }
+    public Guid Id { get; protected set; }
     public List<DomainEvent> Events { get; } = new();
 
     public bool IsTransient()
