@@ -1,7 +1,6 @@
-﻿namespace Vita.Core.Domain.Repositories
+﻿namespace Vita.Core.Domain.Repositories;
+
+public interface IRepository<TEntity> : IAggregateRoot where TEntity : Entity
 {
-    public interface IRepository<TEntity> : IAggregateRoot where TEntity : Entity
-    {
-        IUnitOfWork UnitOfWork { get; }
-    }
+    IUnitOfWork UnitOfWork { get; }
 }

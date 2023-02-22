@@ -5,37 +5,36 @@ using System.Threading;
 using System.Threading.Tasks;
 using Vita.Core.Domain.Repositories;
 
-namespace Vita.Core.Infrastructure.Sql
+namespace Vita.Core.Infrastructure.Sql;
+
+public abstract class VitaDbContext : DbContext, IUnitOfWork
 {
-    public abstract class VitaDbContext : DbContext, IUnitOfWork
+    private readonly IMediator _mediator;
+
+    protected VitaDbContext(DbContextOptions options, IMediator mediator) : base(options)
     {
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+    }
 
-        protected VitaDbContext(DbContextOptions options, IMediator mediator) : base(options)
+    public virtual async Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default)
+    {
+        var result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+
+        var entitiesWithEvents = ChangeTracker.Entries()
+                                              .Select(e => e.Entity as Entity)
+                                              .Where(e => e != null && e.Events.Any())
+                                              .ToList();
+
+        entitiesWithEvents.ForEach(async entity =>
         {
-            _mediator = mediator;
-        }
+            var events = entity.Events.ToArray();
 
-        public virtual async Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default)
-        {
-            var result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            entity.Events.Clear();
 
-            var entitiesWithEvents = ChangeTracker.Entries()
-                                                  .Select(e => e.Entity as Entity)
-                                                  .Where(e => e != null && e.Events.Any())
-                                                  .ToList();
+            foreach (var domainEvent in events)
+                await _mediator.Publish(domainEvent, cancellationToken).ConfigureAwait(false);
+        });
 
-            entitiesWithEvents.ForEach(async entity =>
-            {
-                var events = entity.Events.ToArray();
-
-                entity.Events.Clear();
-
-                foreach (var domainEvent in events)
-                    await _mediator.Publish(domainEvent, cancellationToken).ConfigureAwait(false);
-            });
-
-            return result;
-        }
+        return result;
     }
 }
