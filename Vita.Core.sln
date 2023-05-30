@@ -17,9 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CBB83DE9-0988-4D09-A110-BFC68A364CA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita.Core.Infrastructure.Sql", "Vita.Core.Infrastructure\Vita.Core.Infrastructure.Sql.csproj", "{F6010DF6-6AD7-4204-8B78-3A74525FECAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Core.Infrastructure.Sql", "Vita.Core.Infrastructure\Vita.Core.Infrastructure.Sql.csproj", "{F6010DF6-6AD7-4204-8B78-3A74525FECAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita.Core.Infrastructure.AzureServiceBus", "Vita.Core.Infrastructure.Messaging\Vita.Core.Infrastructure.AzureServiceBus.csproj", "{B557B933-4DE6-4079-AACA-162B00FE13AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vita.Core.Infrastructure.AzureServiceBus", "Vita.Core.Infrastructure.Messaging\Vita.Core.Infrastructure.AzureServiceBus.csproj", "{B557B933-4DE6-4079-AACA-162B00FE13AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F4AE3BC0-712C-4877-927D-D5CF84B3E502}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vita.Common", "Vita.Core\Vita.Common.csproj", "{A519F74A-7518-4048-B102-F62A57AF2EC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,10 @@ Global
 		{B557B933-4DE6-4079-AACA-162B00FE13AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B557B933-4DE6-4079-AACA-162B00FE13AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B557B933-4DE6-4079-AACA-162B00FE13AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A519F74A-7518-4048-B102-F62A57AF2EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A519F74A-7518-4048-B102-F62A57AF2EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A519F74A-7518-4048-B102-F62A57AF2EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A519F74A-7518-4048-B102-F62A57AF2EC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +55,7 @@ Global
 		{9EEE8052-41BA-4F38-9656-2B148DF07618} = {A2712E74-E66E-449E-B1BE-95DC9F024F13}
 		{F6010DF6-6AD7-4204-8B78-3A74525FECAA} = {CBB83DE9-0988-4D09-A110-BFC68A364CA6}
 		{B557B933-4DE6-4079-AACA-162B00FE13AD} = {CBB83DE9-0988-4D09-A110-BFC68A364CA6}
+		{A519F74A-7518-4048-B102-F62A57AF2EC2} = {F4AE3BC0-712C-4877-927D-D5CF84B3E502}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7DB144D6-0843-4A6B-AC4D-E4FA830E59BC}
