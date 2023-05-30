@@ -60,10 +60,10 @@ steps:
         pollingTimeoutSec: '300'
 
     - task: DotNetCoreCLI@2
-      displayName: 'Generate Vita.Core.Infrastructure.Sql.nugpkg'
+      displayName: 'Generate Vita.Common.nugpkg'
       inputs:
         command: 'pack'
-        packagesToPack: '**/Vita.Core.Infrastructure.Sql.csproj'
+        packagesToPack: '**/Vita.Common.csproj'
         nobuild: true
         includesymbols: false
         includesource: false
