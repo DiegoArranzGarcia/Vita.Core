@@ -15,7 +15,7 @@ public class IntegrationEventPublisher : IIntegrationEventPublisher
         _client = new ServiceBusClient(connectionString);
         _sender = _client.CreateSender(queueName);
     }
-    
+
     public async Task PublishAsync(IntegrationEvent integrationEvent)
     {
         try
