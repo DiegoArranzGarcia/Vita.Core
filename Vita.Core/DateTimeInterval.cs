@@ -1,6 +1,6 @@
 ﻿namespace Vita.Common;
 
-public readonly record struct DateTimeInterval
+public record DateTimeInterval
 {
     public DateTimeOffset Start { get; init; }
     public DateTimeOffset End { get; init; }
